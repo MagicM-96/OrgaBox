@@ -1,6 +1,6 @@
 {
-  "name": "orgabox",
-  "short_name": "orgabox",
+  "name": "Organization Box",
+  "short_name": "OrgaBox",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
