@@ -9,15 +9,18 @@ import item from './components/item.vue'
 
 Vue.config.productionTip = false
 
-let newState = localStorage.getItem('state')
-if (newState) {
-  store.replaceState(JSON.parse(newState))
+let savedItems = localStorage.getItem('items')
+let savedBoxes = localStorage.getItem('boxes')
+if (savedBoxes || savedItems) {
+  store.commit('loadSave', { items: JSON.parse(savedItems), boxes: JSON.parse(savedBoxes) })
 } else {
-  localStorage.setItem('state', JSON.stringify(store.state))
+  localStorage.setItem('items', JSON.stringify(store.state.items))
+  localStorage.setItem('boxes', JSON.stringify(store.state.boxes))
 }
 
 store.subscribe((mutation, state) => {
-  localStorage.setItem('state', JSON.stringify(state))
+  localStorage.setItem('items', JSON.stringify(state.items))
+  localStorage.setItem('boxes', JSON.stringify(state.boxes))
 })
 
 Vue.component('box', box)

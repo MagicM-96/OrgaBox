@@ -37,7 +37,10 @@ export default new Vuex.Store({
         stock: 62
       }
     },
-    version: '0.1.1',
+    version: {
+      version: '0.1.1', // eslint-disable-next-line
+      date: process.env.NODE_ENV === 'production' ? __BUILDDATE__ : '~deveplopment use~'
+    },
     changelog: {
       '0.1.1': 'Begin with the app. First implementation of the key functionality. Got a persistens state.'
     },
@@ -46,6 +49,10 @@ export default new Vuex.Store({
   mutations: {
     changeSomething (state) {
       state.counter++
+    },
+    loadSave (state, save) {
+      state.items = save.items
+      state.boxes = save.boxes
     }
   },
   actions: {
