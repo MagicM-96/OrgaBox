@@ -9,7 +9,7 @@
 export default {
   computed: {
     box: function () {
-      return this.$store.state.box[this.$route.params.id]
+      return this.$store.state.boxes[this.$route.params.id]
     }
   },
   mounted () {
