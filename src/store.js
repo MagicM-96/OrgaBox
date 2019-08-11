@@ -38,11 +38,12 @@ export default new Vuex.Store({
       }
     },
     version: {
-      version: '0.1.1', // eslint-disable-next-line
+      version: '0.1.2', // eslint-disable-next-line
       date: process.env.NODE_ENV === 'production' ? __BUILDDATE__ : '~deveplopment use~'
     },
     changelog: {
-      '0.1.1': 'Begin with the app. First implementation of the key functionality. Got a persistens state.'
+      '0.1.1': 'Begin with the app. First implementation of the key functionality. Got a persistens state.',
+      '0.1.2': 'Added a correct title and an icon. Also added the "about" page and some changes in the box/items view.'
     },
     counter: 0
   },

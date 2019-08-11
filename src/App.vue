@@ -2,14 +2,18 @@
   <v-app>
     <v-app-bar app>
       <v-toolbar-title class="headline">
-        <span>OrgaBox</span>
+        <router-link to="/" replace>
+          <span>OrgaBox</span>
+        </router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <span class="mr-2 font-weight-light">Organize your boxes!</span>
     </v-app-bar>
 
     <v-content>
-      <router-view></router-view>
+      <v-container>
+        <router-view></router-view>
+      </v-container>
     </v-content>
     <v-footer
       padless
@@ -20,7 +24,7 @@
         class="lighten-1 text-center"
       >
         <v-card-text>
-          Version {{version.version}} ({{version.date}}) &copy; 2019 — <strong>E.M.Baudert</strong>
+          Version <router-link to="/about" replace>{{version.version}}</router-link> ({{version.date}}) &copy; 2019 — <strong>E.M.Baudert</strong>
         </v-card-text>
       </v-card>
     </v-footer>
@@ -37,3 +41,9 @@ export default {
   })
 }
 </script>
+
+<style scoped>
+a {
+  color: black !important;
+}
+</style>
