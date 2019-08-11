@@ -1,6 +1,7 @@
 <template>
   <v-container>
-    <item v-for="item in box.items" v-bind:key="item" :id="item"></item>
+    <v-icon @click="$router.go(-1)" x-large>mdi-arrow-left-circle-outline</v-icon><br />
+    <item :items="box.items"></item>
   </v-container>
 </template>
 

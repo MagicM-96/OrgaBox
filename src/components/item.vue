@@ -1,23 +1,30 @@
 <template>
-  <v-container>
-    <v-layout
-      text-center
-      column
-      wrap
-    >
-      <h1>{{item.title}}</h1>
-      <p>{{item.description}}</p>
-      <p>{{item.stock}} pieces</p>
-    </v-layout>
-  </v-container>
+  <v-simple-table>
+    <thead>
+      <tr>
+        <th class="text-left">Name</th>
+        <th class="text-left">Description</th>
+        <th class="text-left">Stock</th>
+        <th class="text-left" style="width: 50px;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item in items" :key="item">
+        <td>{{ storeItems[item].title }}</td>
+        <td>{{ storeItems[item].description }}</td>
+        <td>{{ storeItems[item].stock }}</td>
+        <td><v-icon>mdi-menu</v-icon></td>
+      </tr>
+    </tbody>
+  </v-simple-table>
 </template>
 
 <script>
 export default {
-  props: ['id'],
+  props: ['items'],
   computed: {
-    item: function () {
-      return this.$store.state.items[this.id]
+    storeItems: function () {
+      return this.$store.state.items
     }
   },
   methods: {
