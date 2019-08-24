@@ -4,9 +4,7 @@
       text-center
       wrap
     >
-      <v-btn>
-        <router-link :to="`/box/${id}`">Box "{{box.name}}"</router-link>
-      </v-btn>
+      <v-btn v-on:click="$router.push(`/box/${id}`)">Box "{{box.name}}"</v-btn>
     </v-layout>
   </v-container>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <v-simple-table>
+  <v-simple-table v-if="items.length > 0">
     <thead>
       <tr>
         <th class="text-left">Name</th>
@@ -17,6 +17,7 @@
       </tr>
     </tbody>
   </v-simple-table>
+  <h2 v-else>This box has no items. Go ahead and add some!</h2>
 </template>
 
 <script>
