@@ -18,7 +18,7 @@
       <v-icon>mdi-plus</v-icon>
     </v-btn>
     <v-row justify="center">
-      <v-dialog v-model="dialog" persistent max-width="600px">
+      <v-dialog v-model="dialog" max-width="600px">
         <template>
         </template>
         <v-card>
@@ -26,19 +26,21 @@
             <span class="headline">Add Box</span>
           </v-card-title>
           <v-card-text>
-            <v-container>
-              <v-row>
-                <v-col cols="12" sm="12" md="12">
-                  <v-text-field v-model="title" label="Box name*" required></v-text-field>
-                </v-col>
-              </v-row>
-            </v-container>
+            <v-form v-model="valid">
+              <v-container>
+                <v-row>
+                  <v-col cols="12" sm="12" md="12">
+                    <v-text-field :rules="[(v) => !!v || 'Input is required']" v-on:keyup.enter="add()" v-model="title" label="Box name*" required></v-text-field>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-form>
             <small>*indicates required field</small>
           </v-card-text>
           <v-card-actions>
             <div class="flex-grow-1"></div>
             <v-btn @click="cancel()">Cancel</v-btn>
-            <v-btn @click="add()">Add</v-btn>
+            <v-btn :disabled="!valid" @click="add()">Add</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -51,7 +53,8 @@ export default {
   data () {
     return {
       dialog: false,
-      title: ''
+      title: '',
+      valid: false
     }
   },
   computed: {
@@ -61,8 +64,10 @@ export default {
   },
   methods: {
     add () {
-      this.$store.commit('addBox', this.title)
-      this.cancel()
+      if (this.valid) {
+        this.$store.commit('addBox', this.title)
+        this.cancel()
+      }
     },
     cancel () {
       this.title = ''

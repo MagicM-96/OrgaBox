@@ -9,13 +9,14 @@ export default new Vuex.Store({
     boxes: [],
     items: {},
     version: {
-      version: '0.2.1', // eslint-disable-next-line
+      version: '0.2.2', // eslint-disable-next-line
       date: process.env.NODE_ENV === 'production' ? __BUILDDATE__ : '~deveplopment use~'
     },
     changelog: {
       '0.1.1': 'Begin with the app. First implementation of the key functionality. Got a persistens state.',
       '0.1.2': 'Added a correct title and an icon. Also added the "about" page and some changes in the box/items view.',
-      '0.2.1': 'The app now looks like something.\nHighlights:\nYou now can add new boxes and items\nDisplay your Boxes and items.'
+      '0.2.1': 'The app now looks like something. Highlights: You now can add new boxes and items. Display your Boxes and items.',
+      '0.2.2': 'It is now possible to press enter on create Box/Item. Also it is controlled now, whether you entered all required data.'
     }
   },
   mutations: {
