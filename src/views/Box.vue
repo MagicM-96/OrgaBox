@@ -63,7 +63,7 @@ export default {
       valid: true,
       notEmptyRule: [(v) => !!v || 'Input is required'],
       numberRules: [
-        (v) => !!v || 'Input is required', 
+        (v) => !!v || 'Input is required',
         (v) => new RegExp(/^[1-9][0-9]*$/igm).test(v) || 'Input must be a number'
       ]
     }

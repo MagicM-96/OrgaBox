@@ -1,6 +1,10 @@
 <template>
   <v-app>
     <v-app-bar app>
+      <router-link to="/" replace>
+        <v-img src="@/assets/header_icon.png" max-width="45" height="45"></v-img>
+      </router-link>
+      &nbsp;
       <v-toolbar-title class="headline">
         <router-link to="/" replace>
           <span>OrgaBox</span>

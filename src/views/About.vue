@@ -1,6 +1,7 @@
 <template>
   <div class="about">
-    <h1>About OrgaBox Version {{version}}</h1>
+    <h1>About OrgaBox</h1>
+    <h2>Version {{version}}</h2>
     <v-simple-table>
       <thead>
         <tr>
