@@ -47,26 +47,15 @@ export default {
   data () {
     return {
       actions: [
-        { title: 'Edit', callback: (payload) => { this.edit(payload) } },
-        { title: 'Move', callback: (payload) => { this.move(payload) } },
-        { title: 'Delete', callback: (payload) => { this.delete(payload) } }
+        { title: 'Edit', callback: (payload) => { this.$emit('edit', payload) } },
+        { title: 'Move', callback: (payload) => { this.$emit('move', payload) } },
+        { title: 'Delete', callback: (payload) => { this.$emit('delete', payload) } }
       ]
     }
   },
   computed: {
     storeItems: function () {
       return this.$store.state.items
-    }
-  },
-  methods: {
-    edit (itemId) {
-      console.log('editing', itemId)
-    },
-    delete (itemId) {
-      console.log('deleting', itemId)
-    },
-    move (itemId) {
-      console.log('moving', itemId)
     }
   }
 }
