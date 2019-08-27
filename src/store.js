@@ -33,6 +33,18 @@ export default new Vuex.Store({
       state.items[newId] = newItem
       state.boxes[item.box].items.push(newId)
     },
+    modifyItem (state, item) {
+      state.items[item.id].title = item.title
+      state.items[item.id].stock = item.ammount
+      state.items[item.id].description = item.description
+    },
+    moveItem (state, payload) {
+      state.boxes[payload.fromBox].items.splice(state.boxes[payload.fromBox].items.indexOf(payload.item), 1)
+      state.boxes[payload.toBox].items.push(payload.item)
+    },
+    modifyBox (state, box) {
+      state.boxes[box.index].name = box.title
+    },
     addBox (state, name) {
       state.boxes.push({
         name: name,

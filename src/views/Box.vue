@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container v-if="box !== undefined">
     <h1>Box "{{ box.name }}"</h1>
     <v-icon @click="$router.go(-1)" x-large>mdi-arrow-left-circle-outline</v-icon><br /><br />
     <item :items="box.items"></item>
@@ -37,6 +37,10 @@
         </v-card>
       </v-dialog>
     </v-row>
+  </v-container>
+  <v-container v-else>
+    <h1>Box 404</h1>
+    <v-icon @click="$router.go(-1)" x-large>mdi-arrow-left-circle-outline</v-icon>
   </v-container>
 </template>
 
