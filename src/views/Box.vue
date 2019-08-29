@@ -12,7 +12,18 @@
             <span class="headline">{{dialogTitle}} Item</span>
           </v-card-title>
           <v-card-text>
-            <v-form v-model="valid" v-if="mode === 'default' || mode === 'edit'">
+            <v-container v-if="mode === 'delete'">
+              <h2>Are you sure you want to delete "{{items[activeItem].title}}"?</h2>
+            </v-container>
+            <v-container v-else-if="mode === 'move'">
+              <v-select
+                v-model="toBox"
+                :items="moveBoxes"
+                label="Move to"
+                solo
+              ></v-select>
+            </v-container>
+            <v-form v-model="valid" v-else>
               <v-container>
                 <v-row>
                   <v-col cols="12" sm="8" md="8">
@@ -28,15 +39,13 @@
               </v-container>
               <small>*indicates required field</small>
             </v-form>
-            <v-container v-else-if="mode === 'delete'">
-              <h2>Are you sure you want to delete "{{items[activeItem].title}}"?</h2>
-            </v-container>
           </v-card-text>
           <v-card-actions>
             <div class="flex-grow-1"></div>
             <v-btn @click="cancel()">Cancel</v-btn>
-            <v-btn v-if="mode === 'default' || mode === 'edit'" :disabled="!valid" @click="add()">{{mode === 'default' ? 'Add' : 'Save'}}</v-btn>
-            <v-btn v-else-if="mode === 'delete'" @click="acceptRemove()">Delete</v-btn>
+            <v-btn v-if="mode === 'delete'" @click="acceptRemove()">Delete</v-btn>
+            <v-btn v-else-if="mode === 'move'" :disabled="toBox === undefined" @click="performMove()">Move</v-btn>
+            <v-btn v-else :disabled="!valid" @click="add()">{{mode === 'default' ? 'Add' : 'Save'}}</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -63,6 +72,7 @@ export default {
       mode: 'default',
       title: '',
       ammount: '',
+      toBox: undefined,
       description: '',
       snackbar: false,
       snackbarText: '',
@@ -93,6 +103,18 @@ export default {
         default:
           return 'Add'
       }
+    },
+    moveBoxes: function () {
+      let elements = []
+      this.$store.state.boxes.forEach((element, index) => {
+        if (index !== Number(this.$route.params.id)) {
+          elements.push({
+            text: element.name,
+            value: index
+          })
+        }
+      })
+      return elements
     }
   },
   methods: {
@@ -136,13 +158,22 @@ export default {
     },
     move (item) {
       this.activeItem = item
-      console.log('moving', item)
+      this.mode = 'move'
+      this.dialog = true
+    },
+    performMove () {
+      this.$store.commit('moveItem', {
+        fromBox: this.$route.params.id,
+        toBox: this.toBox,
+        item: this.activeItem
+      })
+      this.toBox = undefined
+      this.cancel()
     },
     remove (item) {
       this.activeItem = item
       this.mode = 'delete'
       this.dialog = true
-      console.log('deleting', item)
     },
     cancel () {
       this.dialog = false
