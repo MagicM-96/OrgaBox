@@ -44,6 +44,10 @@ export default new Vuex.Store({
       state.boxes[payload.fromBox].items.splice(state.boxes[payload.fromBox].items.indexOf(payload.item), 1)
       state.boxes[payload.toBox].items.push(payload.item)
     },
+    removeItem (state, payload) {
+      state.boxes[payload.box].items.splice(state.boxes[payload.box].items.indexOf(payload.item), 1)
+      delete state.items[payload.item]
+    },
     modifyBox (state, box) {
       state.boxes[box.index].name = box.title
     },
