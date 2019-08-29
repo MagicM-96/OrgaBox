@@ -1,4 +1,5 @@
 const webpack = require('webpack')
+const {GenerateSW} = require('workbox-webpack-plugin');
 let now = new Date()
 const fillLeadingZeroes = function (num, length) {
   num = '' + num
@@ -15,6 +16,9 @@ module.exports = {
     plugins: [
       new webpack.DefinePlugin({
         __BUILDDATE__: `'${now.getFullYear()+'-'+fillLeadingZeroes(now.getMonth() + 1, 2)+'-'+fillLeadingZeroes(now.getDate(), 2)+' '+fillLeadingZeroes(now.getHours(), 2)+':'+fillLeadingZeroes(now.getMinutes(),2)}'`
+      }),
+      new GenerateSW({
+        skipWaiting: true,
       })
     ]
   }

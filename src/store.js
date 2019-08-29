@@ -9,7 +9,7 @@ export default new Vuex.Store({
     boxes: [],
     items: {},
     version: {
-      version: '0.3.1', // eslint-disable-next-line
+      version: '0.3.2', // eslint-disable-next-line
       date: process.env.NODE_ENV === 'production' ? __BUILDDATE__ : '~deveplopment use~'
     },
     changelog: {
@@ -18,7 +18,8 @@ export default new Vuex.Store({
       '0.2.1': 'The app now looks like something. Highlights: You now can add new boxes and items. Display your Boxes and items.',
       '0.2.2': 'It is now possible to press enter on create Box/Item. Also it is controlled now, whether you entered all required data.',
       '0.2.3': 'Now the app icon is visible in the top bar.',
-      '0.3.1': 'It is now possible to edit and remove Items from inside a box.'
+      '0.3.1': 'It is now possible to edit and remove Items from inside a box.',
+      '0.3.2': 'Now the update of the app should also work properly on iOS.'
     }
   },
   mutations: {
