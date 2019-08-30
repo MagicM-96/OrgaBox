@@ -9,7 +9,7 @@ export default new Vuex.Store({
     boxes: [],
     items: {},
     version: {
-      version: '0.4.1', // eslint-disable-next-line
+      version: '0.5.1', // eslint-disable-next-line
       date: process.env.NODE_ENV === 'production' ? __BUILDDATE__ : '~deveplopment use~'
     },
     changelog: {
@@ -20,7 +20,8 @@ export default new Vuex.Store({
       '0.2.3': 'Now the app icon is visible in the top bar.',
       '0.3.1': 'It is now possible to edit and remove Items from inside a box.',
       '0.3.2': 'Now the update of the app should also work properly on iOS.',
-      '0.4.1': 'You are now able to move items from one box to another.'
+      '0.4.1': 'You are now able to move items from one box to another.',
+      '0.5.1': 'You now can rename and remove boxes.'
     }
   },
   mutations: {
@@ -59,6 +60,9 @@ export default new Vuex.Store({
         name: name,
         items: []
       })
+    },
+    removeBox (state, box) {
+      state.boxes.splice(box, 1)
     }
   },
   actions: {
