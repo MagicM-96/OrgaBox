@@ -31,7 +31,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Ideas for further versions
 
-- [ ] remove title
+- [ ] remove subtitle (organize your boxes)
 - [ ] search function
 - [ ] create a new box on move item
 - [ ] QR creator

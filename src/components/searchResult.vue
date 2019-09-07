@@ -1,9 +1,11 @@
 <template>
-  <h2>Search Result {{number}}</h2>
+  <div>
+    <router-link :to="`/box/${box.id}`">Box "{{box.title}}"</router-link>: {{item.title}} ({{item.description}}): {{item.stock}} time(s)
+  </div>
 </template>
 
 <script>
 export default {
-  props: ['number']
+  props: ['item', 'box']
 }
 </script>
