@@ -6,6 +6,7 @@ import './registerServiceWorker'
 import vuetify from './plugins/vuetify'
 import box from './components/box.vue'
 import item from './components/item.vue'
+import searchResult from './components/searchResult.vue'
 
 Vue.config.productionTip = false
 
@@ -25,6 +26,7 @@ store.subscribe((mutation, state) => {
 
 Vue.component('box', box)
 Vue.component('item', item)
+Vue.component('searchResult', searchResult)
 
 new Vue({
   router,
