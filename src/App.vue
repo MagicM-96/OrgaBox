@@ -12,6 +12,27 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <span class="mr-2 font-weight-light">Organize your boxes!</span>
+      <v-btn icon v-on:click="() => $router.replace('/search')">
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+      <v-menu
+        left
+        bottom
+      >
+        <template v-slot:activator="{ on }">
+          <v-btn icon v-on="on">
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item
+            @click="() => $router.replace('/about')"
+          >
+            <v-list-item-title>About</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
     </v-app-bar>
 
     <v-content>
