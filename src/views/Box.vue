@@ -23,7 +23,7 @@
                 solo
               ></v-select>
             </v-container>
-            <v-form v-model="valid" v-else>
+            <v-form ref="form" v-model="valid" v-else>
               <v-container>
                 <v-row>
                   <v-col cols="12" sm="8" md="8">
@@ -177,9 +177,7 @@ export default {
     },
     cancel () {
       this.dialog = false
-      this.title = ''
-      this.ammount = ''
-      this.description = ''
+      this.$refs.form.reset()
       this.mode = 'default'
       this.activeItem = ''
     }

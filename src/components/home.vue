@@ -29,7 +29,7 @@
             <v-container v-if="mode === 'delete'">
               Are you sure you want to remove the box "{{boxes[activeBox].name}}" <b>and all items inside it</b>?
             </v-container>
-            <v-form v-else v-model="valid">
+            <v-form ref="form" v-else v-model="valid">
               <v-container>
                 <v-row>
                   <v-col cols="12" sm="12" md="12">
@@ -83,7 +83,7 @@ export default {
       }
     },
     cancel () {
-      this.title = ''
+      this.$refs.form.reset()
       this.dialog = false
       this.mode = 'default'
       this.activeBox = undefined
