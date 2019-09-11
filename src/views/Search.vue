@@ -19,7 +19,7 @@ export default {
     results () {
       let results = []
       for (let item in this.items) {
-        if (this.items[item].title.search(new RegExp(this.text, 'i')) > -1) {
+        if (this.items[item].title.search(new RegExp(this.text, 'i')) > -1 || this.items[item].description.search(new RegExp(this.text, 'i')) > -1) {
           results.unshift(this.items[item])
           results[0].id = item
           results[0].box = this.findBox(item)
