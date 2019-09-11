@@ -9,7 +9,7 @@ export default new Vuex.Store({
     boxes: [],
     items: {},
     version: {
-      version: '0.6.2', // eslint-disable-next-line
+      version: '0.6.3', // eslint-disable-next-line
       date: process.env.NODE_ENV === 'production' ? __BUILDDATE__ : '~deveplopment use~'
     },
     changelog: {
@@ -24,7 +24,8 @@ export default new Vuex.Store({
       '0.5.1': 'You now can rename and remove boxes.',
       '0.5.2': 'The validation of forms works now correct when you close the dialog and reopen it.',
       '0.6.1': 'It is now possible to search for items by title. The search and options icon were added to the title bar of the app.',
-      '0.6.2': 'Items also can be searched by their description.'
+      '0.6.2': 'Items also can be searched by their description.',
+      '0.6.3': 'The Search results have been prettyfied.'
     }
   },
   mutations: {

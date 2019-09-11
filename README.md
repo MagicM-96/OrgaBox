@@ -37,6 +37,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - [ ] QR creator
 - [ ] Item pool (for items without boxes)
 - [ ] Export/Import
+- [ ] Blurred search algorithm
 
 ### Known bugs
 
