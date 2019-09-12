@@ -2,7 +2,10 @@
   <div>
     <h1>Search for items</h1>
     <v-text-field v-model="text" label="Search text"></v-text-field>
-    <searchResult v-for="result in results" v-bind:key="result.id" :item="result" :box="result.box"></searchResult>
+    <template v-if="results.length > 0">
+      <searchResult v-for="result in results" v-bind:key="result.id" :item="result" :box="result.box"></searchResult>
+    </template>
+    <h2 v-else>No results found!</h2>
   </div>
 </template>
 
