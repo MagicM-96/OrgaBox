@@ -1,10 +1,13 @@
 <template>
   <v-container v-if="box !== undefined">
-    <h1>Box "{{ box.name }}"</h1>
+    <h1>Box "{{ box.name }}" <v-icon @click="createQR()" x-large color="rgba(0,0,0,1)" right>mdi-qrcode</v-icon></h1>
     <v-icon @click="$router.go(-1)" x-large>mdi-arrow-left-circle-outline</v-icon><br /><br />
     <item :items="box.items" v-on:edit="edit($event)" v-on:move="move($event)" v-on:delete="remove($event)"></item>
     <br />
-    <v-btn v-on:click="dialog = true">Add new item</v-btn>
+    <v-btn v-on:click="dialog = true">Add new item</v-btn>&nbsp;<v-btn v-on:click="createQR()">Create QR Code</v-btn>
+    <br />
+    <br />
+    <div id="container"></div>
     <v-row justify="center">
       <v-dialog v-model="dialog" persistent max-width="600px">
         <v-card>
@@ -63,6 +66,7 @@
 </template>
 
 <script>
+var QRCode = require('qrcode')
 
 export default {
   data () {
@@ -147,6 +151,25 @@ export default {
         item: this.activeItem
       })
       this.cancel()
+    },
+    createQR () {
+      QRCode.toCanvas(this.createBoxText(), { errorCorrectionLevel: 'L' }, function (err, canvas) {
+        if (err) throw err
+        var container = document.getElementById('container') // eslint-disable-next-line
+        container.childElementCount > 0 ? container.removeChild(container.lastElementChild) : null
+        container.appendChild(canvas)
+      })
+    },
+    createBoxText () {
+      let text = `Items:\n`
+      this.box.items.forEach((item) => {
+        text += `${this.items[item].title}: ${this.items[item].stock} time(s)\n`
+      })
+      if (text.length > 2953) {
+        alert('The text is to large and is therefore shortened!')
+        text = text.substring(0, 2953)
+      }
+      return text
     },
     edit (item) {
       this.activeItem = item
