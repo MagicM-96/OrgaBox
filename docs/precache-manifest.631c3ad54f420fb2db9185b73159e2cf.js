@@ -4,31 +4,31 @@ self.__precacheManifest = [
     "url": "robots.txt"
   },
   {
-    "revision": "09445cd55d72918df131f588f372a04f",
+    "revision": "84e04e79e94cc5e79404d6a4e88bf517",
     "url": "service-worker.js"
   },
   {
-    "revision": "ffbf7a145cad04a46529a58e7902d7d5",
-    "url": "img/icons/apple-touch-icon-120x120.png"
+    "revision": "140fe996d748ffbbe7cf1777ced447cf",
+    "url": "img/icons/android-chrome-192x192.png"
   },
   {
-    "revision": "8103140d686403940e62",
-    "url": "js/app.6e3ca06b.js"
+    "revision": "439f9f061f976322d046",
+    "url": "js/app.2ab6a4d5.js"
   },
   {
-    "revision": "446eaae63fa38c1b455f",
-    "url": "js/chunk-vendors.d2d1533c.js"
+    "revision": "9991a66e91d22e6307d8",
+    "url": "js/chunk-vendors.efcc8fab.js"
   },
   {
-    "url": "precache-manifest.bf9bc7f696f2b2a2d9b762e80773e85f.js"
+    "url": "precache-manifest.72df38e12ccf9453652128e139be2b8a.js"
   },
   {
     "revision": "ea58b03e753e8267afb980973871c954",
     "url": "img/icons/apple-touch-icon-152x152.png"
   },
   {
-    "revision": "aefd139866ae70597321",
-    "url": "js/about.d6f5cbb4.js"
+    "revision": "d796a22e8675961326a8",
+    "url": "js/about.04759f09.js"
   },
   {
     "revision": "8008c876381d7b027eb12515c9ec4369",
@@ -43,7 +43,7 @@ self.__precacheManifest = [
     "url": "img/icons/favicon-32x32.png"
   },
   {
-    "revision": "9460c9b690927359cee34d640a52ab04",
+    "revision": "09c89180597f66b6c0bde4589ee92873",
     "url": "index.html"
   },
   {
@@ -67,23 +67,23 @@ self.__precacheManifest = [
     "url": "img/icons/apple-touch-icon-60x60.png"
   },
   {
-    "revision": "7022d31f2b9bb79ded16ac05d5ffdc95",
-    "url": "img/icons/android-chrome-512x512.png"
+    "revision": "ffbf7a145cad04a46529a58e7902d7d5",
+    "url": "img/icons/apple-touch-icon-120x120.png"
   },
   {
-    "revision": "140fe996d748ffbbe7cf1777ced447cf",
-    "url": "img/icons/android-chrome-192x192.png"
+    "revision": "7022d31f2b9bb79ded16ac05d5ffdc95",
+    "url": "img/icons/android-chrome-512x512.png"
   },
   {
     "revision": "789a5c889c5244caada3f81d67acefb4",
     "url": "favicon.ico"
   },
   {
-    "revision": "446eaae63fa38c1b455f",
-    "url": "css/chunk-vendors.3738b6d5.css"
+    "revision": "9991a66e91d22e6307d8",
+    "url": "css/chunk-vendors.fccb20aa.css"
   },
   {
-    "revision": "8103140d686403940e62",
+    "revision": "439f9f061f976322d046",
     "url": "css/app.f14b2702.css"
   }
 ];
