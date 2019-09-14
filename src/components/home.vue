@@ -82,8 +82,8 @@ export default {
         this.cancel()
       }
     },
-    cancel () {
-      this.$refs.form.reset()
+    cancel () { // eslint-disable-next-line
+      this.mode !== 'delete' ? this.$refs.form.reset() : null
       this.dialog = false
       this.mode = 'default'
       this.activeBox = undefined

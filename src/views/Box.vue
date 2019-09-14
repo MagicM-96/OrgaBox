@@ -176,8 +176,8 @@ export default {
       this.dialog = true
     },
     cancel () {
-      this.dialog = false
-      this.$refs.form.reset()
+      this.dialog = false // eslint-disable-next-line
+      this.mode !== 'delete' ? this.$refs.form.reset() : null
       this.mode = 'default'
       this.activeItem = ''
     }
