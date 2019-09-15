@@ -199,10 +199,12 @@ export default {
       this.dialog = true
     },
     cancel () {
-      this.dialog = false // eslint-disable-next-line
-      this.mode !== 'delete' ? this.$refs.form.reset() : null
-      this.mode = 'default'
-      this.activeItem = ''
+      this.dialog = false
+      setTimeout(() => { // eslint-disable-next-line
+        this.mode !== 'delete' && this.mode !== 'qrcode' ? this.$refs.form.reset() : null
+        this.mode = 'default'
+        this.activeItem = ''
+      }, 200)
     }
   }
 }

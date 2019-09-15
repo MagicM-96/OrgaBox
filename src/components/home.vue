@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import { setTimeout } from 'timers'
 export default {
   data () {
     return {
@@ -82,11 +83,13 @@ export default {
         this.cancel()
       }
     },
-    cancel () { // eslint-disable-next-line
-      this.mode !== 'delete' ? this.$refs.form.reset() : null
+    cancel () {
       this.dialog = false
-      this.mode = 'default'
-      this.activeBox = undefined
+      setTimeout(() => { // eslint-disable-next-line
+        this.mode !== 'delete' ? this.$refs.form.reset() : null
+        this.mode = 'default'
+        this.activeBox = undefined
+      }, 200)
     },
     edit (box) {
       this.mode = 'edit'
