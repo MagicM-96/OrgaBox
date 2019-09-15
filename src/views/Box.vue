@@ -7,16 +7,21 @@
     <v-btn v-on:click="dialog = true">Add new item</v-btn>&nbsp;<v-btn v-on:click="createQR()">Create QR Code</v-btn>
     <br />
     <br />
-    <div id="container"></div>
     <v-row justify="center">
       <v-dialog v-model="dialog" persistent max-width="600px">
         <v-card>
           <v-card-title>
-            <span class="headline">{{dialogTitle}} Item</span>
+            <span class="headline" v-if="mode !== 'qrcode'">{{dialogTitle}} Item</span>
+            <span v-else>{{box.name}}</span>
           </v-card-title>
           <v-card-text>
             <v-container v-if="mode === 'delete'">
               <h2>Are you sure you want to delete "{{items[activeItem].title}}"?</h2>
+            </v-container>
+            <v-container v-else-if="mode === 'qrcode'">
+              <div id="container"></div>
+              <br />
+              <h2>Save this QR Code by taking a Screenshot</h2>
             </v-container>
             <v-container v-else-if="mode === 'move'">
               <v-select
@@ -46,7 +51,8 @@
           <v-card-actions>
             <div class="flex-grow-1"></div>
             <v-btn @click="cancel()">Cancel</v-btn>
-            <v-btn v-if="mode === 'delete'" @click="acceptRemove()">Delete</v-btn>
+            <span v-if="mode === 'qrcode'"></span>
+            <v-btn v-else-if="mode === 'delete'" @click="acceptRemove()">Delete</v-btn>
             <v-btn v-else-if="mode === 'move'" :disabled="toBox === undefined" @click="performMove()">Move</v-btn>
             <v-btn v-else :disabled="!valid" @click="add()">{{mode === 'default' ? 'Add' : 'Save'}}</v-btn>
           </v-card-actions>
@@ -66,6 +72,7 @@
 </template>
 
 <script>
+import { setTimeout } from 'timers'
 var QRCode = require('qrcode')
 
 export default {
@@ -153,12 +160,16 @@ export default {
       this.cancel()
     },
     createQR () {
-      QRCode.toCanvas(this.createBoxText(), { errorCorrectionLevel: 'L' }, function (err, canvas) {
-        if (err) throw err
-        var container = document.getElementById('container') // eslint-disable-next-line
-        container.childElementCount > 0 ? container.removeChild(container.lastElementChild) : null
-        container.appendChild(canvas)
-      })
+      this.mode = 'qrcode'
+      this.dialog = true
+      setTimeout(() => {
+        QRCode.toCanvas(this.createBoxText(), { errorCorrectionLevel: 'L' }, function (err, canvas) {
+          if (err) throw err
+          var container = document.getElementById('container') // eslint-disable-next-line
+          container.childElementCount > 0 ? container.removeChild(container.lastElementChild) : null
+          container.appendChild(canvas)
+        })
+      }, 1)
     },
     createBoxText () {
       let text = `Items:\n`
