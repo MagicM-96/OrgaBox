@@ -1,6 +1,6 @@
 <template>
   <v-container v-if="box !== undefined">
-    <h1>Box "{{ box.name }}" <v-icon @click="createQR()" x-large color="rgba(0,0,0,1)" right>mdi-qrcode</v-icon></h1>
+    <h1>Box "{{ box.name }}" <v-icon @click="createQR()" x-large color="rgba(0,0,0,1)" right>mdi-qrcode-plus</v-icon></h1>
     <v-icon @click="$router.go(-1)" x-large>mdi-arrow-left-circle-outline</v-icon><br /><br />
     <item :items="box.items" v-on:edit="edit($event)" v-on:move="move($event)" v-on:delete="remove($event)"></item>
     <br />
