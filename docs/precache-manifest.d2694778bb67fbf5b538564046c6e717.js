@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "robots.txt"
   },
   {
-    "revision": "84e04e79e94cc5e79404d6a4e88bf517",
+    "revision": "56974ca44021f471f6ede2b0ea914d17",
     "url": "service-worker.js"
   },
   {
@@ -12,23 +12,23 @@ self.__precacheManifest = [
     "url": "img/icons/android-chrome-192x192.png"
   },
   {
-    "revision": "439f9f061f976322d046",
-    "url": "js/app.2ab6a4d5.js"
+    "revision": "03996358ddf598b2b792",
+    "url": "js/app.16d65cc8.js"
   },
   {
     "revision": "9991a66e91d22e6307d8",
     "url": "js/chunk-vendors.efcc8fab.js"
   },
   {
-    "url": "precache-manifest.72df38e12ccf9453652128e139be2b8a.js"
+    "url": "precache-manifest.dd4b9617a2148a7534e4343cc475470c.js"
   },
   {
     "revision": "ea58b03e753e8267afb980973871c954",
     "url": "img/icons/apple-touch-icon-152x152.png"
   },
   {
-    "revision": "d796a22e8675961326a8",
-    "url": "js/about.04759f09.js"
+    "revision": "23f49bf684359cbd3d3d",
+    "url": "js/about.694fbc43.js"
   },
   {
     "revision": "8008c876381d7b027eb12515c9ec4369",
@@ -43,16 +43,16 @@ self.__precacheManifest = [
     "url": "img/icons/favicon-32x32.png"
   },
   {
-    "revision": "09c89180597f66b6c0bde4589ee92873",
+    "revision": "7d20aa6ee163307f9836795b67a5ac0b",
     "url": "index.html"
-  },
-  {
-    "revision": "25686b315c3e5c63f77f1529240b94fb",
-    "url": "img/icons/msapplication-icon-144x144.png"
   },
   {
     "revision": "254361de448867f3e46281686fce79e9",
     "url": "img/icons/mstile-150x150.png"
+  },
+  {
+    "revision": "25686b315c3e5c63f77f1529240b94fb",
+    "url": "img/icons/msapplication-icon-144x144.png"
   },
   {
     "revision": "8008c876381d7b027eb12515c9ec4369",
@@ -83,7 +83,7 @@ self.__precacheManifest = [
     "url": "css/chunk-vendors.fccb20aa.css"
   },
   {
-    "revision": "439f9f061f976322d046",
+    "revision": "03996358ddf598b2b792",
     "url": "css/app.f14b2702.css"
   }
 ];
