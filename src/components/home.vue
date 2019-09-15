@@ -18,7 +18,7 @@
       <v-icon>mdi-plus</v-icon>
     </v-btn>
     <v-row justify="center">
-      <v-dialog v-model="dialog" max-width="600px">
+      <v-dialog v-model="dialog" persistent max-width="600px">
         <template>
         </template>
         <v-card>
