@@ -9,7 +9,7 @@ export default new Vuex.Store({
     boxes: [],
     items: {},
     version: {
-      version: '0.7.1', // eslint-disable-next-line
+      version: '0.7.2', // eslint-disable-next-line
       date: process.env.NODE_ENV === 'production' ? __BUILDDATE__ : '~deveplopment use~'
     },
     changelog: {
@@ -28,7 +28,8 @@ export default new Vuex.Store({
       '0.6.3': 'The Search results have been prettyfied.',
       '0.6.4': 'Now a text is displayed when there are no search results.',
       '0.6.5': 'Bugfix: Cancel button didn\'t work properly on the "delete box" and "delete item" dialog.',
-      '0.7.1': 'QR Codes are now added to the app. You can create a QR Code for every box and save it with a screenshot.'
+      '0.7.1': 'QR Codes are now added to the app. You can create a QR Code for every box and save it with a screenshot.',
+      '0.7.2': 'The dialogs on the home screen didn\'t work properly when they are closed by tapping beside them. As a result it now isn\'t possible anymore to close dialogs by tapping beside them but by tapping "cancel".'
     }
   },
   mutations: {
