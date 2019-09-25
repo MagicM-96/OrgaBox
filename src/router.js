@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Box from './views/Box.vue'
 import Search from './views/Search.vue'
+import Import from './views/Import.vue'
+import Export from './views/Export.vue'
 
 Vue.use(Router)
 
@@ -22,6 +24,16 @@ export default new Router({
       path: '/search',
       name: 'search',
       component: Search
+    },
+    {
+      path: '/import',
+      name: 'import',
+      component: Import
+    },
+    {
+      path: '/export',
+      name: 'export',
+      component: Export
     },
     {
       path: '/about',

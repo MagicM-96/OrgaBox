@@ -11,6 +11,9 @@
         </router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-btn icon v-on:click="() => $router.replace('/export')">
+        <v-icon>mdi-export</v-icon>
+      </v-btn>
       <v-btn icon v-on:click="() => $router.replace('/search')">
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
@@ -29,6 +32,21 @@
             @click="() => $router.replace('/about')"
           >
             <v-list-item-title>About</v-list-item-title>
+          </v-list-item>
+          <v-list-item
+            @click="() => $router.replace('/export')"
+          >
+            <v-list-item-title>Export</v-list-item-title>
+          </v-list-item>
+          <v-list-item
+            @click="() => $router.replace('/import')"
+          >
+            <v-list-item-title>Import</v-list-item-title>
+          </v-list-item>
+          <v-list-item
+            @click="() => $router.replace('/search')"
+          >
+            <v-list-item-title>Search</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
