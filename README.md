@@ -31,10 +31,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Ideas for further versions
 
-- [ ] remove subtitle (organize your boxes)
+- [x] remove subtitle (organize your boxes)
 - [x] search function
 - [ ] create a new box on move item
-- [ ] QR creator
+- [x] QR creator
 - [ ] Item pool (for items without boxes)
 - [ ] Export/Import
 - [ ] Blurred search algorithm

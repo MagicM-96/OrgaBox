@@ -11,7 +11,6 @@
         </router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <span class="mr-2 font-weight-light">Organize your boxes!</span>
       <v-btn icon v-on:click="() => $router.replace('/search')">
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
