@@ -36,7 +36,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - [ ] create a new box on move item
 - [x] QR creator
 - [ ] Item pool (for items without boxes)
-- [ ] Export/Import
+- [x] Export/Import
 - [ ] Blurred search algorithm
 
 ### Known bugs

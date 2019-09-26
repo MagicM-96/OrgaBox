@@ -11,6 +11,11 @@
       <v-textarea v-model="exportText" label="Export"></v-textarea>
       <v-btn @click="copyExport()">Copy to Clipboard</v-btn>
     </template>
+    <v-snackbar
+      v-model="snackbar"
+    >
+      {{ snackbarText }}
+    </v-snackbar>
   </div>
 </template>
 
@@ -25,7 +30,9 @@ export default {
           value: 0
         }
       ],
-      exportText: ''
+      exportText: '',
+      snackbar: false,
+      snackbarText: ''
     }
   },
   methods: {
@@ -47,7 +54,20 @@ export default {
       }
     },
     copyExport () {
-      // TODO: add a copy to Clipboard method
+      if (navigator.clipboard) {
+        try {
+          navigator.clipboard.writeText(this.exportText).then(() => {
+            this.snackbarText = 'Text copied to clipboard'
+            this.snackbar = true
+          })
+        } catch (err) {
+          this.snackbarText = 'Error on copy to clipboard!'
+          this.snackbar = true
+        }
+      } else {
+        this.snackbarText = 'Clipboard not supported!'
+        this.snackbar = true
+      }
     }
   }
 }

@@ -29,12 +29,14 @@ export default {
     importData () {
       if (this.format !== undefined && this.importText) {
         let importData = {}
+        let failed = false
         switch (this.format) {
           case 0: // JSON
             try {
               importData = JSON.parse(this.importText)
               // TODO: control if the JSON format is correct
             } catch (e) {
+              failed = true
               console.error('Something went wrong on import!', e)
               // TODO: Add an error report to the user
               alert('Failed to parse import!')
@@ -43,11 +45,13 @@ export default {
           default:
             console.error('Unknown Export format!')
         }
-        this.$store.commit('loadSave', {
-          items: importData.items || {},
-          boxes: importData.boxes || []
-        })
-        this.$router.replace('/')
+        if (!failed) {
+          this.$store.commit('loadSave', {
+            items: importData.items || {},
+            boxes: importData.boxes || []
+          })
+          this.$router.replace('/')
+        }
       }
     }
   }
