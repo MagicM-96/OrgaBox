@@ -9,7 +9,7 @@ export default new Vuex.Store({
     boxes: [],
     items: {},
     version: {
-      version: '0.8.1', // eslint-disable-next-line
+      version: '0.8.2', // eslint-disable-next-line
       date: process.env.NODE_ENV === 'production' ? __BUILDDATE__ : '~deveplopment use~'
     },
     changelog: {
@@ -31,7 +31,8 @@ export default new Vuex.Store({
       '0.7.1': 'QR Codes are now added to the app. You can create a QR Code for every box and save it with a screenshot.',
       '0.7.2': 'The dialogs on the home screen didn\'t work properly when they are closed by tapping beside them. As a result it now isn\'t possible anymore to close dialogs by tapping beside them but by tapping "cancel".',
       '0.7.3': 'Changed the icon for creating the QR code of a box in the heading. Bugfix: Changed closing animation of dialogs so you now don\'t see the dialog changing. The QR Code is now displayed in a pop-up so it can be screenshotted better.',
-      '0.8.1': 'Added Export/Import. Added the export icon in the top bar. Added Import, Export and search as menu options. Export/Import as JSON is possible. It is possible to copy the export to the clipboard.'
+      '0.8.1': 'Added Export/Import. Added the export icon in the top bar. Added Import, Export and search as menu options. Export/Import as JSON is possible. It is possible to copy the export to the clipboard.',
+      '0.8.2': 'Sometimes the icons weren\'t accessible offline. This should be fixed now!'
     }
   },
   mutations: {
