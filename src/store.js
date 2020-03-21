@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-const uuid = require('uuid/v4')
+import { v4 as uuid } from 'uuid'
 
 Vue.use(Vuex)
 
@@ -41,12 +41,12 @@ export default new Vuex.Store({
       state.boxes = save.boxes
     },
     addItem (state, item) {
-      let newItem = {
+      const newItem = {
         title: item.title,
         stock: item.ammount,
         description: item.description
       }
-      let newId = uuid()
+      const newId = uuid()
       state.items[newId] = newItem
       state.boxes[item.box].items.push(newId)
     },

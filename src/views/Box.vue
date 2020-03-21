@@ -116,7 +116,7 @@ export default {
       }
     },
     moveBoxes: function () {
-      let elements = []
+      const elements = []
       this.$store.state.boxes.forEach((element, index) => {
         if (index !== Number(this.$route.params.id)) {
           elements.push({
@@ -172,7 +172,7 @@ export default {
       }, 1)
     },
     createBoxText () {
-      let text = `Items:\n`
+      let text = 'Items:\n'
       this.box.items.forEach((item) => {
         text += `${this.items[item].title}: ${this.items[item].stock} time(s)\n`
       })

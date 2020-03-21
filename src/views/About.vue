@@ -26,8 +26,8 @@ export default {
       return this.$store.state.version.version
     },
     changelog: function () {
-      let changes = []
-      for (let key in this.$store.state.changelog) {
+      const changes = []
+      for (const key in this.$store.state.changelog) {
         changes.unshift({ number: key, description: this.$store.state.changelog[key] })
       }
       return changes

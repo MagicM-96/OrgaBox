@@ -104,7 +104,7 @@ export default {
       this.dialog = true
     },
     confirmRemove () {
-      let items = []
+      const items = []
       this.boxes[this.activeBox].items.forEach((item) => {
         items.push(item)
       })
