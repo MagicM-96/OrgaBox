@@ -71,7 +71,7 @@ export default {
             })
             break
           default:
-            console.error('Unknown Export format!')
+            alert('Unknown Export format!')
         }
         this.exportText = text
       }

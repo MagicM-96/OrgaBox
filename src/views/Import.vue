@@ -37,13 +37,13 @@ export default {
               // TODO: control if the JSON format is correct
             } catch (e) {
               failed = true
-              console.error('Something went wrong on import!', e)
+              alert('Something went wrong on import!', e)
               // TODO: Add an error report to the user
               alert('Failed to parse import!')
             }
             break
           default:
-            console.error('Unknown Export format!')
+            alert('Unknown Export format!')
         }
         if (!failed) {
           this.$store.commit('loadSave', {
