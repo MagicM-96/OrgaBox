@@ -6,6 +6,9 @@
       :items="availableFormats"
       label="Export Format"
     ></v-select>
+    <v-alert v-if="format !== undefined" type="info">
+      {{availableFormats[format].info}}
+    </v-alert>
     <v-btn :disabled="format === undefined" @click="createExport()">Create Export</v-btn>
     <template v-if="exportText">
       <v-textarea v-model="exportText" label="Export"></v-textarea>
@@ -27,7 +30,13 @@ export default {
       availableFormats: [
         {
           text: 'JSON',
+          info: 'Ideal to migrate your data to another device or to make a backup.',
           value: 0
+        },
+        {
+          text: 'CSV',
+          info: 'Can be copied to a text editor and saved as .csv file to get a table in excel - separated by ";".',
+          value: 1
         }
       ],
       exportText: '',
@@ -46,6 +55,20 @@ export default {
             text += ',"boxes":'
             text += JSON.stringify(this.$store.state.boxes)
             text += '}'
+            break
+          case 1: // CSV
+            text += 'Box Name;Item Name;Item Ammount;Item Description\n'
+            this.$store.state.boxes.forEach(box => {
+              text += `${box.name}\n`
+              box.items.forEach(item => {
+                item = this.$store.state.items[item]
+                text += ';'
+                text += `${item.title};`
+                text += `${item.stock};`
+                text += `${item.description}`
+                text += '\n'
+              })
+            })
             break
           default:
             console.error('Unknown Export format!')

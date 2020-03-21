@@ -66,7 +66,8 @@
         class="lighten-1 text-center"
       >
         <v-card-text>
-          Version <router-link to="/about" replace>{{version.version}}</router-link> ({{version.date}}) &copy; 2019 — <strong>E.M.Baudert</strong>
+          Version <router-link to="/about" replace>{{version.version}}</router-link> ({{version.date}})
+          <br /> &copy; 2019-2020 — <strong>E.M.Baudert</strong>
         </v-card-text>
       </v-card>
     </v-footer>

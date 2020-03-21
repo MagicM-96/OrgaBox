@@ -1,6 +1,6 @@
 <template>
   <v-container v-if="box !== undefined">
-    <h1>Box "{{ box.name }}" <v-icon @click="createQR()" x-large color="rgba(0,0,0,1)" right>mdi-qrcode-plus</v-icon></h1>
+    <h1>{{ box.name }} <v-icon @click="createQR()" x-large color="rgba(0,0,0,1)" right>mdi-qrcode-plus</v-icon></h1>
     <v-icon @click="$router.go(-1)" x-large>mdi-arrow-left-circle-outline</v-icon><br /><br />
     <item :items="box.items" v-on:edit="edit($event)" v-on:move="move($event)" v-on:delete="remove($event)"></item>
     <br />
@@ -116,7 +116,7 @@ export default {
       }
     },
     moveBoxes: function () {
-      let elements = []
+      const elements = []
       this.$store.state.boxes.forEach((element, index) => {
         if (index !== Number(this.$route.params.id)) {
           elements.push({
@@ -172,7 +172,7 @@ export default {
       }, 1)
     },
     createBoxText () {
-      let text = `Items:\n`
+      let text = 'Items:\n'
       this.box.items.forEach((item) => {
         text += `${this.items[item].title}: ${this.items[item].stock} time(s)\n`
       })

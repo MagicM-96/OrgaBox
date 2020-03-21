@@ -10,8 +10,8 @@ import searchResult from './components/searchResult.vue'
 
 Vue.config.productionTip = false
 
-let savedItems = localStorage.getItem('items')
-let savedBoxes = localStorage.getItem('boxes')
+const savedItems = localStorage.getItem('items')
+const savedBoxes = localStorage.getItem('boxes')
 if (savedBoxes || savedItems) {
   store.commit('loadSave', { items: JSON.parse(savedItems), boxes: JSON.parse(savedBoxes) })
 } else {

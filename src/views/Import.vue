@@ -4,7 +4,7 @@
     <v-select
       v-model="format"
       :items="availableFormats"
-      label="Export Format"
+      label="Import Format"
     ></v-select>
     <v-textarea v-model="importText" label="Import"></v-textarea>
     <v-btn :disabled="!importText || format === undefined" @click="importData()">Import</v-btn>

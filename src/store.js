@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-const uuid = require('uuid/v4')
+import { v4 as uuid } from 'uuid'
 
 Vue.use(Vuex)
 
@@ -9,7 +9,7 @@ export default new Vuex.Store({
     boxes: [],
     items: {},
     version: {
-      version: '0.8.2', // eslint-disable-next-line
+      version: '0.8.3', // eslint-disable-next-line
       date: process.env.NODE_ENV === 'production' ? __BUILDDATE__ : '~deveplopment use~'
     },
     changelog: {
@@ -32,7 +32,8 @@ export default new Vuex.Store({
       '0.7.2': 'The dialogs on the home screen didn\'t work properly when they are closed by tapping beside them. As a result it now isn\'t possible anymore to close dialogs by tapping beside them but by tapping "cancel".',
       '0.7.3': 'Changed the icon for creating the QR code of a box in the heading. Bugfix: Changed closing animation of dialogs so you now don\'t see the dialog changing. The QR Code is now displayed in a pop-up so it can be screenshotted better.',
       '0.8.1': 'Added Export/Import. Added the export icon in the top bar. Added Import, Export and search as menu options. Export/Import as JSON is possible. It is possible to copy the export to the clipboard.',
-      '0.8.2': 'Sometimes the icons weren\'t accessible offline. This should be fixed now!'
+      '0.8.2': 'Sometimes the icons weren\'t accessible offline. This should be fixed now!',
+      '0.8.3': 'New Export Format: CSV now available! Optimized the Backend.'
     }
   },
   mutations: {
@@ -41,12 +42,12 @@ export default new Vuex.Store({
       state.boxes = save.boxes
     },
     addItem (state, item) {
-      let newItem = {
+      const newItem = {
         title: item.title,
         stock: item.ammount,
         description: item.description
       }
-      let newId = uuid()
+      const newId = uuid()
       state.items[newId] = newItem
       state.boxes[item.box].items.push(newId)
     },
