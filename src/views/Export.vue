@@ -59,13 +59,13 @@ export default {
           case 1: // CSV
             text += 'Box Name;Item Name;Item Ammount;Item Description\n'
             this.$store.state.boxes.forEach(box => {
-              text += `${box.name}\n`
+              text += `${box.name.replace(/;/igm, ',')}\n`
               box.items.forEach(item => {
                 item = this.$store.state.items[item]
                 text += ';'
-                text += `${item.title};`
+                text += `${item.title.replace(/;/igm, ',')};`
                 text += `${item.stock};`
-                text += `${item.description}`
+                text += `${item.description.replace(/;/igm, ',')}`
                 text += '\n'
               })
             })
