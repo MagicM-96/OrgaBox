@@ -7,6 +7,18 @@ import vuetify from './plugins/vuetify'
 import box from './components/box.vue'
 import item from './components/item.vue'
 import searchResult from './components/searchResult.vue'
+import VueI18n from 'vue-i18n'
+import lang from '@/assets/locales.json'
+
+Vue.use(VueI18n)
+
+const browserlang = (navigator.language || navigator.userLanguage).substring(0, 2)
+
+const i18n = new VueI18n({
+  locale: browserlang,
+  fallbackLocale: 'en',
+  messages: lang
+})
 
 Vue.config.productionTip = false
 
@@ -32,5 +44,6 @@ new Vue({
   router,
   store,
   vuetify,
+  i18n,
   render: h => h(App)
 }).$mount('#app')
