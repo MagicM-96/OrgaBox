@@ -1,7 +1,7 @@
 <template>
   <div class="about">
-    <h1>About OrgaBox</h1>
-    <h2>Version {{version}}</h2>
+    <h1>{{ $t('navAbout') }} OrgaBox</h1>
+    <h2>Version {{version.version}} (Built at {{version.date}})</h2>
     <v-simple-table>
       <thead>
         <tr>
@@ -23,7 +23,7 @@
 export default {
   computed: {
     version: function () {
-      return this.$store.state.version.version
+      return this.$store.state.version
     },
     changelog: function () {
       const changes = []

@@ -31,22 +31,22 @@
           <v-list-item
             @click="() => $router.replace('/about')"
           >
-            <v-list-item-title>About</v-list-item-title>
+            <v-list-item-title>{{ $t('navAbout') }}</v-list-item-title>
           </v-list-item>
           <v-list-item
             @click="() => $router.replace('/export')"
           >
-            <v-list-item-title>Export</v-list-item-title>
+            <v-list-item-title>{{ $t('navExport') }}</v-list-item-title>
           </v-list-item>
           <v-list-item
             @click="() => $router.replace('/import')"
           >
-            <v-list-item-title>Import</v-list-item-title>
+            <v-list-item-title>{{ $t('navImport') }}</v-list-item-title>
           </v-list-item>
           <v-list-item
             @click="() => $router.replace('/search')"
           >
-            <v-list-item-title>Search</v-list-item-title>
+            <v-list-item-title>{{ $t('navSearch') }}</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>

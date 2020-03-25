@@ -7,7 +7,7 @@
       <template v-if="boxes.length > 0">
         <box v-for="(box, index) in boxes" v-bind:key="box.name" :id="index" :box="box" v-on:edit="edit($event)" v-on:delete="remove($event)"></box>
       </template>
-      <h2 v-else>You don't have any boxes! Get started and create one!</h2>
+      <h2 v-else>{{ $t('homeNoBoxes') }}</h2>
     </v-layout>
     <br />
     <v-btn
@@ -23,28 +23,28 @@
         </template>
         <v-card>
           <v-card-title>
-            <span class="headline">{{mode === 'edit' ? 'Edit' : mode === 'delete' ? 'Delete' : 'Add'}} Box</span>
+            <span class="headline">{{mode === 'edit' ? $t('dialogEditBoxTitle') : mode === 'delete' ? $t('dialogDeleteBoxTitle') : $t('dialogAddBoxTitle')}}</span>
           </v-card-title>
           <v-card-text>
             <v-container v-if="mode === 'delete'">
-              Are you sure you want to remove the box "{{boxes[activeBox].name}}" <b>and all items inside it</b>?
+              {{ $t('dialogDeleteBoxInfoBegin').replace('{name}', boxes[activeBox].name) }} <b>{{ $t('dialogDeleteBoxInfoBold') }}</b> {{ $t('dialogDeleteBoxInfoEnd') }}
             </v-container>
             <v-form ref="form" v-else v-model="valid">
               <v-container>
                 <v-row>
                   <v-col cols="12" sm="12" md="12">
-                    <v-text-field :rules="[(v) => !!v || 'Input is required']" v-on:keyup.enter="add()" v-model="title" label="Box name*" required></v-text-field>
+                    <v-text-field :rules="[(v) => !!v || $t('dialogRequiredInput')]" v-on:keyup.enter="add()" v-model="title" :label="$t('dialogAddBoxField')" required></v-text-field>
                   </v-col>
                 </v-row>
               </v-container>
-              <small>*indicates required field</small>
+              <small>{{ $t('dialogRequiredInfo') }}</small>
             </v-form>
           </v-card-text>
           <v-card-actions>
             <div class="flex-grow-1"></div>
-            <v-btn @click="cancel()">Cancel</v-btn>
-            <v-btn v-if="mode === 'delete'" @click="confirmRemove()">Delete</v-btn>
-            <v-btn v-else :disabled="!valid" @click="add()">{{mode === 'edit' ? 'Edit' : 'Add'}}</v-btn>
+            <v-btn @click="cancel()">{{ $t('dialogButtonCancel') }}</v-btn>
+            <v-btn v-if="mode === 'delete'" @click="confirmRemove()">{{ $t('dialogButtonDelete') }}</v-btn>
+            <v-btn v-else :disabled="!valid" @click="add()">{{mode === 'edit' ? $t('dialogButtonEdit') : $t('dialogButtonAdd')}}</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
