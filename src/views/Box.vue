@@ -4,30 +4,30 @@
     <v-icon @click="$router.go(-1)" x-large>mdi-arrow-left-circle-outline</v-icon><br /><br />
     <item :items="box.items" v-on:edit="edit($event)" v-on:move="move($event)" v-on:delete="remove($event)"></item>
     <br />
-    <v-btn v-on:click="dialog = true">Add new item</v-btn>&nbsp;<v-btn v-on:click="createQR()">Create QR Code</v-btn>
+    <v-btn v-on:click="dialog = true">{{ $t('boxButtonAdd') }}</v-btn>&nbsp;<v-btn v-on:click="createQR()">{{ $t('boxButtonCreateQR') }}</v-btn>
     <br />
     <br />
     <v-row justify="center">
       <v-dialog v-model="dialog" persistent max-width="600px">
         <v-card>
           <v-card-title>
-            <span class="headline" v-if="mode !== 'qrcode'">{{dialogTitle}} Item</span>
+            <span class="headline" v-if="mode !== 'qrcode'">{{dialogTitle}}</span>
             <span v-else>{{box.name}}</span>
           </v-card-title>
           <v-card-text>
             <v-container v-if="mode === 'delete'">
-              <h2>Are you sure you want to delete "{{items[activeItem].title}}"?</h2>
+              <h2>{{ $t('dialogDeleteItemInfo').replace('{title}', items[activeItem].title) }}</h2>
             </v-container>
             <v-container v-else-if="mode === 'qrcode'">
               <div id="container"></div>
               <br />
-              <h2>Save this QR Code by taking a Screenshot</h2>
+              <h2>{{ $t('dialogCreateQR') }}</h2>
             </v-container>
             <v-container v-else-if="mode === 'move'">
               <v-select
                 v-model="toBox"
                 :items="moveBoxes"
-                label="Move to"
+                :label="$t('dialogMoveItemField')"
                 solo
               ></v-select>
             </v-container>
@@ -35,26 +35,26 @@
               <v-container>
                 <v-row>
                   <v-col cols="12" sm="8" md="8">
-                    <v-text-field :rules="notEmptyRule" v-model="title" label="Item name*" required v-on:keyup.enter="add()"></v-text-field>
+                    <v-text-field :rules="notEmptyRule" v-model="title" :label="$t('dialogAddItemName')" required v-on:keyup.enter="add()"></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="4" md="4">
-                    <v-text-field :rules="numberRules" v-model="ammount" label="Ammount*" required v-on:keyup.enter="add()"></v-text-field>
+                    <v-text-field :rules="numberRules" v-model="ammount" :label="$t('dialogAddItemAmmount')" required v-on:keyup.enter="add()"></v-text-field>
                   </v-col>
                   <v-col cols="12">
-                    <v-textarea v-model="description" label="Description"></v-textarea>
+                    <v-textarea v-model="description" :label="$t('dialogAddItemDescription')"></v-textarea>
                   </v-col>
                 </v-row>
               </v-container>
-              <small>*indicates required field</small>
+              <small>{{ $t('dialogRequiredInfo') }}</small>
             </v-form>
           </v-card-text>
           <v-card-actions>
             <div class="flex-grow-1"></div>
-            <v-btn @click="cancel()">Cancel</v-btn>
+            <v-btn @click="cancel()">{{ $t('dialogButtonCancel') }}</v-btn>
             <span v-if="mode === 'qrcode'"></span>
-            <v-btn v-else-if="mode === 'delete'" @click="acceptRemove()">Delete</v-btn>
-            <v-btn v-else-if="mode === 'move'" :disabled="toBox === undefined" @click="performMove()">Move</v-btn>
-            <v-btn v-else :disabled="!valid" @click="add()">{{mode === 'default' ? 'Add' : 'Save'}}</v-btn>
+            <v-btn v-else-if="mode === 'delete'" @click="acceptRemove()">{{ $t('dialogButtonDelete') }}</v-btn>
+            <v-btn v-else-if="mode === 'move'" :disabled="toBox === undefined" @click="performMove()">{{ $t('dialogButtonMove') }}</v-btn>
+            <v-btn v-else :disabled="!valid" @click="add()">{{mode === 'default' ? $t('dialogButtonAdd') : $t('dialogButtonSave') }}</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -88,10 +88,10 @@ export default {
       snackbar: false,
       snackbarText: '',
       valid: true,
-      notEmptyRule: [(v) => !!v || 'Input is required'],
+      notEmptyRule: [(v) => !!v || this.$t('dialogRequiredInput')],
       numberRules: [
-        (v) => !!v || 'Input is required',
-        (v) => new RegExp(/^[1-9][0-9]*$/igm).test(v) || 'Input must be a number'
+        (v) => !!v || this.$t('dialogRequiredInput'),
+        (v) => new RegExp(/^[1-9][0-9]*$/igm).test(v) || this.$t('dialogRequiredNumber')
       ]
     }
   },
@@ -105,14 +105,14 @@ export default {
     dialogTitle: function () {
       switch (this.mode) {
         case 'edit':
-          return 'Edit'
+          return this.$t('dialogEditItemTitle')
         case 'delete':
-          return 'Delete'
+          return this.$t('dialogDeleteItemTitle')
         case 'move':
-          return 'Move'
+          return this.$t('dialogMoveItemTitle')
         case 'default':
         default:
-          return 'Add'
+          return this.$t('dialogAddItemTitle')
       }
     },
     moveBoxes: function () {
@@ -148,7 +148,7 @@ export default {
         }
         this.cancel()
       } else {
-        this.snackbarText = 'Please add all required data!'
+        this.snackbarText = this.$t('snackbarMissingData')
         this.snackbar = true
       }
     },

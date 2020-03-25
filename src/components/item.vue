@@ -2,10 +2,10 @@
   <v-simple-table v-if="items.length > 0">
     <thead>
       <tr>
-        <th class="text-left">Name</th>
-        <th class="text-left">Description</th>
-        <th class="text-left">Stock</th>
-        <th class="text-left" style="width: 50px;">Actions</th>
+        <th class="text-left">{{ $t('boxTableName') }}</th>
+        <th class="text-left">{{ $t('boxTableDescription') }}</th>
+        <th class="text-left">{{ $t('boxTableAmmount') }}</th>
+        <th class="text-left" style="width: 50px;">{{ $t('boxTableActions') }}</th>
       </tr>
     </thead>
     <tbody>
@@ -38,7 +38,7 @@
       </tr>
     </tbody>
   </v-simple-table>
-  <h2 v-else>This box has no items. Go ahead and add some!</h2>
+  <h2 v-else>{{ $t('boxNoItems') }}</h2>
 </template>
 
 <script>
@@ -47,9 +47,9 @@ export default {
   data () {
     return {
       actions: [
-        { title: 'Edit', callback: (payload) => { this.$emit('edit', payload) } },
-        { title: 'Move', callback: (payload) => { this.$emit('move', payload) } },
-        { title: 'Delete', callback: (payload) => { this.$emit('delete', payload) } }
+        { title: this.$t('boxItemActionEdit'), callback: (payload) => { this.$emit('edit', payload) } },
+        { title: this.$t('boxItemActionMove'), callback: (payload) => { this.$emit('move', payload) } },
+        { title: this.$t('boxItemActionDelete'), callback: (payload) => { this.$emit('delete', payload) } }
       ]
     }
   },

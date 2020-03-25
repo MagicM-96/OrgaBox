@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h1>Import your data</h1>
+    <h1>{{ $t('importTitle') }}</h1>
     <v-select
       v-model="format"
       :items="availableFormats"
-      label="Import Format"
+      :label="$t('importField')"
     ></v-select>
-    <v-textarea v-model="importText" label="Import"></v-textarea>
-    <v-btn :disabled="!importText || format === undefined" @click="importData()">Import</v-btn>
+    <v-textarea v-model="importText" :label="$t('importInputTitle')"></v-textarea>
+    <v-btn :disabled="!importText || format === undefined" @click="importData()">{{ $t('importButtonProcess') }}</v-btn>
   </div>
 </template>
 

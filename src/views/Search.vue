@@ -1,11 +1,11 @@
 <template>
   <div>
-    <h1>Search for items</h1>
-    <v-text-field v-model="text" label="Search text"></v-text-field>
+    <h1>{{ $t('searchTitle') }}</h1>
+    <v-text-field v-model="text" :label="$t('searchField')"></v-text-field>
     <template v-if="results.length > 0">
       <searchResult v-for="result in results" v-bind:key="result.id" :item="result" :box="result.box"></searchResult>
     </template>
-    <h2 v-else>No results found!</h2>
+    <h2 v-else>{{ $t('searchNoResults') }}</h2>
   </div>
 </template>
 
