@@ -9,7 +9,7 @@ export default new Vuex.Store({
     boxes: [],
     items: {},
     version: {
-      version: '0.8.3', // eslint-disable-next-line
+      version: '0.8.4', // eslint-disable-next-line
       date: process.env.NODE_ENV === 'production' ? __BUILDDATE__ : '~deveplopment use~'
     },
     changelog: {
@@ -33,7 +33,8 @@ export default new Vuex.Store({
       '0.7.3': 'Changed the icon for creating the QR code of a box in the heading. Bugfix: Changed closing animation of dialogs so you now don\'t see the dialog changing. The QR Code is now displayed in a pop-up so it can be screenshotted better.',
       '0.8.1': 'Added Export/Import. Added the export icon in the top bar. Added Import, Export and search as menu options. Export/Import as JSON is possible. It is possible to copy the export to the clipboard.',
       '0.8.2': 'Sometimes the icons weren\'t accessible offline. This should be fixed now!',
-      '0.8.3': 'New Export Format: CSV now available! Optimized the Backend.'
+      '0.8.3': 'New Export Format: CSV now available! Optimized the Backend.',
+      '0.8.4': 'App is now available in multiple languages. The app picks the browser language - english as fallback. Supported languages: English and German'
     }
   },
   mutations: {
