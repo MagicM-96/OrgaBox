@@ -212,7 +212,7 @@ export default {
     cancel () {
       this.dialog = false
       setTimeout(() => { // eslint-disable-next-line
-        this.mode !== 'delete' && this.mode !== 'qrcode' ? this.$refs.form.reset() : null
+        this.mode !== 'delete' && this.mode !== 'qrcode' && this.mode !== 'move' ? this.$refs.form.reset() : this.mode === 'move' ? this.toBox = undefined : null
         this.mode = 'default'
         this.activeItem = ''
       }, 200)
