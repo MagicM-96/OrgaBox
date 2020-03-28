@@ -11,8 +11,8 @@
         </router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon v-on:click="() => $router.replace('/export')">
-        <v-icon>mdi-export</v-icon>
+      <v-btn icon v-on:click="() => settings()">
+        <v-icon>mdi-cog</v-icon>
       </v-btn>
       <v-btn icon v-on:click="() => $router.replace('/search')">
         <v-icon>mdi-magnify</v-icon>
@@ -29,24 +29,29 @@
 
         <v-list>
           <v-list-item
-            @click="() => $router.replace('/about')"
+            @click="() => $router.replace('/search')"
           >
-            <v-list-item-title>{{ $t('navAbout') }}</v-list-item-title>
+            <v-icon>mdi-magnify</v-icon> <v-list-item-title> {{ $t('navSearch') }}</v-list-item-title>
           </v-list-item>
           <v-list-item
             @click="() => $router.replace('/export')"
           >
-            <v-list-item-title>{{ $t('navExport') }}</v-list-item-title>
+            <v-icon>mdi-export</v-icon> <v-list-item-title> {{ $t('navExport') }}</v-list-item-title>
           </v-list-item>
           <v-list-item
             @click="() => $router.replace('/import')"
           >
-            <v-list-item-title>{{ $t('navImport') }}</v-list-item-title>
+            <v-icon>mdi-import</v-icon> <v-list-item-title> {{ $t('navImport') }}</v-list-item-title>
           </v-list-item>
           <v-list-item
-            @click="() => $router.replace('/search')"
+            @click="() => settings()"
           >
-            <v-list-item-title>{{ $t('navSearch') }}</v-list-item-title>
+            <v-icon>mdi-cog</v-icon> <v-list-item-title> {{ $t('navSettings') }}</v-list-item-title>
+          </v-list-item>
+          <v-list-item
+            @click="() => $router.replace('/about')"
+          >
+            <v-icon>mdi-information-outline</v-icon> <v-list-item-title> {{ $t('navAbout') }}</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
@@ -55,6 +60,31 @@
     <v-content>
       <v-container>
         <router-view></router-view>
+        <v-row justify="center">
+      <v-dialog v-model="dialog" persistent max-width="600px">
+        <template>
+        </template>
+        <v-card>
+          <v-card-title>
+            <span class="headline">{{ $t('dialogSettingsTitle') }}</span>
+          </v-card-title>
+          <v-card-text>
+            <v-select
+                v-model="selectedLang"
+                :items="settingValues.language.available"
+                :label="$t('dialogSettingsLanguage')"
+                append-outer-icon="mdi-restore"
+                @click:append-outer="reset()"
+              ></v-select>
+          </v-card-text>
+          <v-card-actions>
+            <div class="flex-grow-1"></div>
+            <v-btn @click="cancel()">{{ $t('dialogButtonCancel') }}</v-btn>
+            <v-btn @click="save()">{{ $t('dialogButtonSave') }}</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-row>
       </v-container>
     </v-content>
     <v-footer
@@ -79,9 +109,36 @@ import store from './store'
 
 export default {
   name: 'App',
-  data: () => ({
-    version: store.state.version
-  })
+  data () {
+    return {
+      version: store.state.version,
+      dialog: false,
+      settingValues: {
+        language: store.state.language
+      },
+      selectedLang: store.state.language.active
+    }
+  },
+  methods: {
+    settings () {
+      this.dialog = true
+    },
+    cancel () {
+      this.dialog = false
+      this.selectedLang = this.$store.state.language.active
+    },
+    reset () {
+      this.dialog = false
+      this.$store.commit('modifyLanguage', undefined)
+      this.selectedLang = this.$store.state.language.active
+      this.$i18n.locale = (navigator.language || navigator.userLanguage).substring(0, 2)
+    },
+    save () {
+      this.dialog = false
+      this.$store.commit('modifyLanguage', this.selectedLang)
+      this.$i18n.locale = this.selectedLang
+    }
+  }
 }
 </script>
 

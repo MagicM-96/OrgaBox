@@ -24,8 +24,9 @@ Vue.config.productionTip = false
 
 const savedItems = localStorage.getItem('items')
 const savedBoxes = localStorage.getItem('boxes')
-if (savedBoxes || savedItems) {
-  store.commit('loadSave', { items: JSON.parse(savedItems), boxes: JSON.parse(savedBoxes) })
+const savedLang = localStorage.getItem('lang')
+if (savedBoxes || savedItems || (savedBoxes && savedLang !== 'undefined')) {
+  store.commit('loadSave', { items: JSON.parse(savedItems), boxes: JSON.parse(savedBoxes), lang: savedLang })
 } else {
   localStorage.setItem('items', JSON.stringify(store.state.items))
   localStorage.setItem('boxes', JSON.stringify(store.state.boxes))
@@ -34,7 +35,12 @@ if (savedBoxes || savedItems) {
 store.subscribe((mutation, state) => {
   localStorage.setItem('items', JSON.stringify(state.items))
   localStorage.setItem('boxes', JSON.stringify(state.boxes))
+  localStorage.setItem('lang', state.language.active)
 })
+
+if (savedLang !== 'undefined') {
+  i18n.locale = savedLang
+}
 
 Vue.component('box', box)
 Vue.component('item', item)
