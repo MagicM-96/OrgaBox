@@ -8,6 +8,18 @@ export default new Vuex.Store({
   state: {
     boxes: [],
     items: {},
+    language: {
+      available: [
+        {
+          text: 'English',
+          value: 'en'
+        },
+        {
+          text: 'Deutsch',
+          value: 'de'
+        }
+      ]
+    },
     version: {
       version: '0.8.4', // eslint-disable-next-line
       date: process.env.NODE_ENV === 'production' ? __BUILDDATE__ : '~deveplopment use~'
@@ -41,6 +53,9 @@ export default new Vuex.Store({
     loadSave (state, save) {
       state.items = save.items
       state.boxes = save.boxes
+      if (save.lang !== 'undefined') {
+        state.language.active = save.lang
+      }
     },
     addItem (state, item) {
       const newItem = {
@@ -67,6 +82,15 @@ export default new Vuex.Store({
     },
     modifyBox (state, box) {
       state.boxes[box.index].name = box.title
+    },
+    modifyLanguage (state, change) {
+      if (!change) {
+        if (state.language.active) {
+          delete state.language.active
+        }
+      } else {
+        state.language.active = change
+      }
     },
     addBox (state, name) {
       state.boxes.push({
