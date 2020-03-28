@@ -29,24 +29,29 @@
 
         <v-list>
           <v-list-item
-            @click="() => $router.replace('/about')"
+            @click="() => $router.replace('/search')"
           >
-            <v-list-item-title>{{ $t('navAbout') }}</v-list-item-title>
+            <v-icon>mdi-magnify</v-icon> <v-list-item-title> {{ $t('navSearch') }}</v-list-item-title>
           </v-list-item>
           <v-list-item
             @click="() => $router.replace('/export')"
           >
-            <v-list-item-title>{{ $t('navExport') }}</v-list-item-title>
+            <v-icon>mdi-export</v-icon> <v-list-item-title> {{ $t('navExport') }}</v-list-item-title>
           </v-list-item>
           <v-list-item
             @click="() => $router.replace('/import')"
           >
-            <v-list-item-title>{{ $t('navImport') }}</v-list-item-title>
+            <v-icon>mdi-import</v-icon> <v-list-item-title> {{ $t('navImport') }}</v-list-item-title>
           </v-list-item>
           <v-list-item
-            @click="() => $router.replace('/search')"
+            @click="() => settings()"
           >
-            <v-list-item-title>{{ $t('navSearch') }}</v-list-item-title>
+            <v-icon>mdi-cog</v-icon> <v-list-item-title> {{ $t('navSettings') }}</v-list-item-title>
+          </v-list-item>
+          <v-list-item
+            @click="() => $router.replace('/about')"
+          >
+            <v-icon>mdi-information-outline</v-icon> <v-list-item-title> {{ $t('navAbout') }}</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
