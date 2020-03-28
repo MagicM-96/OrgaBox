@@ -97,7 +97,7 @@
       >
         <v-card-text>
           Version <router-link to="/about" replace>{{version.version}}</router-link> ({{version.date}})
-          <br /> &copy; 2019-2020 — <strong>E.M.Baudert</strong>
+          <br /> &copy; 2019-2020 — <a href="mailto:embaudert@gmx.de"><strong>E.M.Baudert</strong></a>
         </v-card-text>
       </v-card>
     </v-footer>

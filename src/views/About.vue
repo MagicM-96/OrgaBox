@@ -2,6 +2,7 @@
   <div class="about">
     <h1>{{ $t('navAbout') }} OrgaBox</h1>
     <h2>Version {{version.version}} (Built at {{version.date}})</h2>
+    <p>&copy; 2019-2020 — <a href="mailto:embaudert@gmx.de"><strong>E.M.Baudert</strong></a></p>
     <v-simple-table>
       <thead>
         <tr>
@@ -38,3 +39,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+a {
+  color: black !important;
+}
+</style>
