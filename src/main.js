@@ -25,7 +25,7 @@ Vue.config.productionTip = false
 const savedItems = localStorage.getItem('items')
 const savedBoxes = localStorage.getItem('boxes')
 const savedLang = localStorage.getItem('lang')
-if (savedBoxes || savedItems || savedLang !== 'undefined') {
+if (savedBoxes || savedItems || (savedBoxes && savedLang !== 'undefined')) {
   store.commit('loadSave', { items: JSON.parse(savedItems), boxes: JSON.parse(savedBoxes), lang: savedLang })
 } else {
   localStorage.setItem('items', JSON.stringify(store.state.items))
