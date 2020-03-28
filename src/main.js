@@ -38,7 +38,7 @@ store.subscribe((mutation, state) => {
   localStorage.setItem('lang', state.language.active)
 })
 
-if (savedLang !== 'undefined') {
+if (savedLang && savedLang !== 'undefined') {
   i18n.locale = savedLang
 }
 
