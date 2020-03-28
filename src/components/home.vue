@@ -88,6 +88,7 @@ export default {
       setTimeout(() => { // eslint-disable-next-line
         this.mode !== 'delete' ? this.$refs.form.reset() : null
         this.mode = 'default'
+        this.title = ''
         this.activeBox = undefined
       }, 200)
     },
