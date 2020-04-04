@@ -21,7 +21,7 @@ export default new Vuex.Store({
       ]
     },
     version: {
-      version: '0.8.6', // eslint-disable-next-line
+      version: '0.8.7', // eslint-disable-next-line
       date: process.env.NODE_ENV === 'production' ? __BUILDDATE__ : '~deveplopment use~'
     },
     changelog: {
@@ -48,7 +48,8 @@ export default new Vuex.Store({
       '0.8.3': 'New Export Format: CSV now available! Optimized the Backend.',
       '0.8.4': 'App is now available in multiple languages. The app picks the browser language - english as fallback. Supported languages: English and German.',
       '0.8.5': 'Added language settings. Re-worked Navigation Menu.',
-      '0.8.6': 'Some minor bugs were fixed. Added a contact to the about page and the footer.'
+      '0.8.6': 'Some minor bugs were fixed. Added a contact to the about page and the footer.',
+      '0.8.7': 'It is now possible to move an Item to a new Box.'
     }
   },
   mutations: {

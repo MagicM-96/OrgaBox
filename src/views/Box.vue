@@ -28,8 +28,11 @@
                 v-model="toBox"
                 :items="moveBoxes"
                 :label="$t('dialogMoveItemField')"
-                solo
               ></v-select>
+              <v-container v-if="toBox === -1">
+                <v-text-field :rules="notEmptyRule" v-model="title" :label="$t('dialogMoveNewBoxName')" required></v-text-field>
+                <small>{{ $t('dialogRequiredInfo') }}</small>
+              </v-container>
             </v-container>
             <v-form ref="form" v-model="valid" v-else>
               <v-container>
@@ -53,7 +56,7 @@
             <v-btn @click="cancel()">{{ $t('dialogButtonCancel') }}</v-btn>
             <span v-if="mode === 'qrcode'"></span>
             <v-btn v-else-if="mode === 'delete'" @click="acceptRemove()">{{ $t('dialogButtonDelete') }}</v-btn>
-            <v-btn v-else-if="mode === 'move'" :disabled="toBox === undefined" @click="performMove()">{{ $t('dialogButtonMove') }}</v-btn>
+            <v-btn v-else-if="mode === 'move'" :disabled="toBox === undefined || (toBox === -1 && !title)" @click="performMove()">{{ $t('dialogButtonMove') }}</v-btn>
             <v-btn v-else :disabled="!valid" @click="add()">{{mode === 'default' ? $t('dialogButtonAdd') : $t('dialogButtonSave') }}</v-btn>
           </v-card-actions>
         </v-card>
@@ -116,7 +119,10 @@ export default {
       }
     },
     moveBoxes: function () {
-      const elements = []
+      const elements = [{
+        text: this.$t('dialogMoveNewBoxSelect'),
+        value: -1
+      }]
       this.$store.state.boxes.forEach((element, index) => {
         if (index !== Number(this.$route.params.id)) {
           elements.push({
@@ -196,6 +202,10 @@ export default {
       this.dialog = true
     },
     performMove () {
+      if (this.toBox === -1) {
+        this.toBox = this.moveBoxes.length
+        this.$store.commit('addBox', this.title)
+      }
       this.$store.commit('moveItem', {
         fromBox: this.$route.params.id,
         toBox: this.toBox,
