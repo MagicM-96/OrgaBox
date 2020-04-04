@@ -55,9 +55,7 @@ export default {
             break
           case 1: {
             const lines = this.importText.split('\n')
-            console.log(lines)
             lines.splice(0, 1)
-            console.log(lines)
             while (lines.length >= 1 && lines[0].split(';').length === 1 && lines[0] !== '') {
               this.$store.commit('addBox', lines[0])
               lines.splice(0, 1)
@@ -71,7 +69,6 @@ export default {
                   box: this.$store.state.boxes.length - 1
                 })
               }
-              console.log(lines)
             }
             break
           }
