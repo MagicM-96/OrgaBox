@@ -41,7 +41,7 @@
                     <v-text-field :rules="notEmptyRule" v-model="title" :label="$t('dialogAddItemName')" required v-on:keyup.enter="add()"></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="4" md="4">
-                    <v-text-field :rules="numberRules" v-model="ammount" :label="$t('dialogAddItemAmmount')" required v-on:keyup.enter="add()"></v-text-field>
+                    <v-text-field :rules="numberRules" v-model="ammount" :label="$t('dialogAddItemAmmount')" v-on:keyup.enter="add()"></v-text-field>
                   </v-col>
                   <v-col cols="12">
                     <v-textarea v-model="description" :label="$t('dialogAddItemDescription')"></v-textarea>
@@ -85,7 +85,7 @@ export default {
       dialog: false,
       mode: 'default',
       title: '',
-      ammount: '',
+      ammount: 0,
       toBox: undefined,
       description: '',
       snackbar: false,
@@ -94,7 +94,7 @@ export default {
       notEmptyRule: [(v) => !!v || this.$t('dialogRequiredInput')],
       numberRules: [
         (v) => !!v || this.$t('dialogRequiredInput'),
-        (v) => new RegExp(/^[1-9][0-9]*$/igm).test(v) || this.$t('dialogRequiredNumber')
+        (v) => new RegExp(/^[0-9][0-9]*$/igm).test(v) || this.$t('dialogRequiredNumber')
       ]
     }
   },
@@ -224,6 +224,7 @@ export default {
       setTimeout(() => { // eslint-disable-next-line
         this.mode !== 'delete' && this.mode !== 'qrcode' && this.mode !== 'move' ? this.$refs.form.reset() : this.mode === 'move' ? this.toBox = undefined : null
         this.mode = 'default'
+        this.ammount = 0
         this.activeItem = ''
       }, 200)
     }
