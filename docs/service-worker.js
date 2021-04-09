@@ -1,2 +1,34 @@
-if(!self.define){const e=e=>{"require"!==e&&(e+=".js");let i=Promise.resolve();return c[e]||(i=new Promise(async i=>{if("document"in self){const c=document.createElement("script");c.src=e,document.head.appendChild(c),c.onload=i}else importScripts(e),i()})),i.then(()=>{if(!c[e])throw new Error(`Module ${e} didn’t register its module`);return c[e]})},i=(i,c)=>{Promise.all(i.map(e)).then(e=>c(1===e.length?e[0]:e))},c={require:Promise.resolve(i)};self.define=(i,n,r)=>{c[i]||(c[i]=Promise.resolve().then(()=>{let c={};const o={uri:location.origin+i.slice(1)};return Promise.all(n.map(i=>{switch(i){case"exports":return c;case"module":return o;default:return e(i)}})).then(e=>{const i=r(...e);return c.default||(c.default=i),c})}))}}define("./service-worker.js",["./workbox-c6353aa9"],(function(e){"use strict";e.skipWaiting(),e.precacheAndRoute([{url:"css/about.5d0a5b23.css",revision:"94cecd62782068100c48a16e72660360"},{url:"css/app.142d328a.css",revision:"e88c728d132eb51a96a5cef5693e86b0"},{url:"css/chunk-vendors.25446539.css",revision:"8382ff99a74342a083b4da2800681ec1"},{url:"favicon.ico",revision:"a49bb6d44649f2288152c41bfd4d09d8"},{url:"fonts/materialdesignicons-webfont.63d2a595.woff",revision:"63d2a5950fc212096c3612f71ae66f64"},{url:"fonts/materialdesignicons-webfont.7fb0e378.woff2",revision:"7fb0e3780372f10f804513e2e0c39e78"},{url:"fonts/materialdesignicons-webfont.a1a0ed86.eot",revision:"a1a0ed860f50ffd42ba46d7c10f30255"},{url:"fonts/materialdesignicons-webfont.fe1545ef.ttf",revision:"fe1545ef4dd1eef2f1e25528898fc0b3"},{url:"img/header_icon.82d83863.png",revision:"82d83863c311ef83026bec6f9e425074"},{url:"img/icons/android-chrome-192x192.png",revision:"140fe996d748ffbbe7cf1777ced447cf"},{url:"img/icons/android-chrome-512x512.png",revision:"7022d31f2b9bb79ded16ac05d5ffdc95"},{url:"img/icons/apple-touch-icon-120x120.png",revision:"ffbf7a145cad04a46529a58e7902d7d5"},{url:"img/icons/apple-touch-icon-152x152.png",revision:"ea58b03e753e8267afb980973871c954"},{url:"img/icons/apple-touch-icon-180x180.png",revision:"8008c876381d7b027eb12515c9ec4369"},{url:"img/icons/apple-touch-icon-60x60.png",revision:"2114301831b2bf1512955b6e0dc6f516"},{url:"img/icons/apple-touch-icon-76x76.png",revision:"160bb1a889a190a98eb630ac238f7285"},{url:"img/icons/apple-touch-icon.png",revision:"8008c876381d7b027eb12515c9ec4369"},{url:"img/icons/favicon-16x16.png",revision:"8042a31d4f997f810d57fe550197d356"},{url:"img/icons/favicon-32x32.png",revision:"3d8dc3ce588a55241a5882d04e5087e7"},{url:"img/icons/msapplication-icon-144x144.png",revision:"25686b315c3e5c63f77f1529240b94fb"},{url:"img/icons/mstile-150x150.png",revision:"254361de448867f3e46281686fce79e9"},{url:"index.html",revision:"1c9c05a3d20717849b65bc2c3777baee"},{url:"js/about.4101f702.js",revision:"864cba95ec79c8ae08c065b9ddc41f3c"},{url:"js/app.d4893946.js",revision:"1894ddef51c2c1e8344c130164961ccb"},{url:"js/chunk-vendors.43cc8be0.js",revision:"9805fec0dd84206a85fbfe8474ed1274"},{url:"manifest.json",revision:"13843e18b2fa7d4e553fd3768e0c5c82"},{url:"precache-manifest.cbf0f31328a81a152425c79d50b1bd94.js",revision:"cbf0f31328a81a152425c79d50b1bd94"},{url:"robots.txt",revision:"b6216d61c03e6ce0c9aea6ca7808f7ca"},{url:"service-worker.js",revision:"35daba90c41ce42ebed55437d60dbd38"}],{})}));
-//# sourceMappingURL=service-worker.js.map
+/**
+ * Welcome to your Workbox-powered service worker!
+ *
+ * You'll need to register this file in your web app and you should
+ * disable HTTP caching for this file too.
+ * See https://goo.gl/nhQhGp
+ *
+ * The rest of the code is auto-generated. Please don't update this file
+ * directly; instead, make changes to your Workbox build configuration
+ * and re-run your build process.
+ * See https://goo.gl/2aRDsh
+ */
+
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+
+importScripts(
+  "precache-manifest.bebe3deb3c87da155c5aaf3772f1de85.js"
+);
+
+workbox.core.setCacheNameDetails({prefix: "orgabox"});
+
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
+
+/**
+ * The workboxSW.precacheAndRoute() method efficiently caches and responds to
+ * requests for URLs in the manifest.
+ * See https://goo.gl/S9QRab
+ */
+self.__precacheManifest = [].concat(self.__precacheManifest || []);
+workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
