@@ -16,9 +16,6 @@ module.exports = {
     plugins: [
       new webpack.DefinePlugin({
         __BUILDDATE__: `'${now.getFullYear()+'-'+fillLeadingZeroes(now.getMonth() + 1, 2)+'-'+fillLeadingZeroes(now.getDate(), 2)+' '+fillLeadingZeroes(now.getHours(), 2)+':'+fillLeadingZeroes(now.getMinutes(),2)}'`
-      }),
-      new GenerateSW({
-        skipWaiting: true,
       })
     ]
   }

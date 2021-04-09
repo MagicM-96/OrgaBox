@@ -70,8 +70,8 @@ export default {
               })
             })
             break
-          default:
-            alert('Unknown Export format!')
+          default: // eslint-disable-next-line
+            console.error('Unknown Export format!')
         }
         this.exportText = text
       }

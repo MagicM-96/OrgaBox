@@ -47,8 +47,8 @@ export default {
                 boxes: importData.boxes || []
               })
             } catch (e) {
-              failed = true
-              alert('Something went wrong on import!', e)
+              failed = true // eslint-disable-next-line
+              console.error('Something went wrong on import!', e)
               // TODO: Add an error report to the user
               alert('Failed to parse import!')
             }
@@ -72,8 +72,8 @@ export default {
             }
             break
           }
-          default:
-            alert('Unknown Export format!')
+          default: // eslint-disable-next-line
+            console.error('Unknown Export format!')
         }
         if (!failed) {
           this.$router.replace('/')
