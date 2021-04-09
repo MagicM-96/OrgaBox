@@ -57,7 +57,7 @@
       </v-menu>
     </v-app-bar>
 
-    <v-content>
+    <v-main>
       <v-container>
         <router-view></router-view>
         <v-row justify="center">
@@ -86,7 +86,7 @@
       </v-dialog>
     </v-row>
       </v-container>
-    </v-content>
+    </v-main>
     <v-footer
       padless
     >
@@ -97,7 +97,7 @@
       >
         <v-card-text>
           Version <router-link to="/about" replace>{{version.version}}</router-link> ({{version.date}})
-          <br /> &copy; 2019-2020 — <a href="mailto:embaudert@gmx.de"><strong>E.M.Baudert</strong></a>
+          <br /> &copy; 2019 - {{new Date().getFullYear()}} — <a href="mailto:magicm-96@gmx.de"><strong>MagicM</strong></a>
         </v-card-text>
       </v-card>
     </v-footer>

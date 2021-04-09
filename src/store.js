@@ -21,7 +21,7 @@ export default new Vuex.Store({
       ]
     },
     version: {
-      version: '0.8.8', // eslint-disable-next-line
+      version: '0.9.1', // eslint-disable-next-line
       date: process.env.NODE_ENV === 'production' ? __BUILDDATE__ : '~deveplopment use~'
     },
     changelog: {
@@ -50,7 +50,8 @@ export default new Vuex.Store({
       '0.8.5': 'Added language settings. Re-worked Navigation Menu.',
       '0.8.6': 'Some minor bugs were fixed. Added a contact to the about page and the footer.',
       '0.8.7': 'It is now possible to create a new Box on "move Item".',
-      '0.8.8': 'The import now provides an import function for the CSV export.'
+      '0.8.8': 'The import now provides an import function for the CSV export.',
+      '0.9.1': 'With this version many security issues have been resolved and some packages were upgraded.'
     }
   },
   mutations: {
