@@ -25,8 +25,9 @@ Vue.config.productionTip = false
 const savedItems = localStorage.getItem('items')
 const savedBoxes = localStorage.getItem('boxes')
 const savedLang = localStorage.getItem('lang')
-if (savedBoxes || savedItems || (savedBoxes && savedLang !== 'undefined')) {
-  store.commit('loadSave', { items: JSON.parse(savedItems), boxes: JSON.parse(savedBoxes), lang: savedLang })
+const savedTheme = localStorage.getItem('darkmode')
+if (savedBoxes || savedItems || (savedBoxes && savedLang !== 'undefined') || savedTheme !== null) {
+  store.commit('loadSave', { items: JSON.parse(savedItems), boxes: JSON.parse(savedBoxes), lang: savedLang, darkmode: savedTheme })
 } else {
   localStorage.setItem('items', JSON.stringify(store.state.items))
   localStorage.setItem('boxes', JSON.stringify(store.state.boxes))
@@ -36,6 +37,7 @@ store.subscribe((mutation, state) => {
   localStorage.setItem('items', JSON.stringify(state.items))
   localStorage.setItem('boxes', JSON.stringify(state.boxes))
   localStorage.setItem('lang', state.language.active)
+  localStorage.setItem('darkmode', state.darkTheme)
 })
 
 if (savedLang && savedLang !== 'undefined') {
@@ -45,6 +47,8 @@ if (savedLang && savedLang !== 'undefined') {
 Vue.component('box', box)
 Vue.component('item', item)
 Vue.component('searchResult', searchResult)
+
+vuetify.framework.theme.isDark = store.state.darkTheme
 
 new Vue({
   router,
