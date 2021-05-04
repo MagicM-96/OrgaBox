@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.91beb1760c183e02473327e19148dbb0.js"
+  "precache-manifest.739f4890e1b1160dc21edecf261f675d.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "orgabox"});
