@@ -76,6 +76,15 @@
                 append-outer-icon="mdi-restore"
                 @click:append-outer="reset()"
               ></v-select>
+              <v-container
+                class="px-0"
+                fluid
+              >
+                <v-switch
+                  v-model="theme"
+                  :label="$t('dialogSettingsTheme')"
+                ></v-switch>
+              </v-container>
           </v-card-text>
           <v-card-actions>
             <div class="flex-grow-1"></div>
@@ -116,7 +125,8 @@ export default {
       settingValues: {
         language: store.state.language
       },
-      selectedLang: store.state.language.active
+      selectedLang: store.state.language.active,
+      theme: store.state.darkTheme
     }
   },
   methods: {
@@ -129,13 +139,16 @@ export default {
     },
     reset () {
       this.dialog = false
-      this.$store.commit('modifyLanguage', undefined)
+      this.theme = false
+      this.$store.commit('saveSettings', undefined)
+      this.$vuetify.theme.isDark = this.theme
       this.selectedLang = this.$store.state.language.active
       this.$i18n.locale = (navigator.language || navigator.userLanguage).substring(0, 2)
     },
     save () {
       this.dialog = false
-      this.$store.commit('modifyLanguage', this.selectedLang)
+      this.$store.commit('saveSettings', { lang: this.selectedLang, darkmode: this.theme })
+      this.$vuetify.theme.isDark = this.theme
       this.$i18n.locale = this.selectedLang
     }
   }
@@ -144,6 +157,6 @@ export default {
 
 <style scoped>
 a {
-  color: black !important;
+  color: var(--v-anchor-link) !important;
 }
 </style>
