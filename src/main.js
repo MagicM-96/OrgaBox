@@ -22,12 +22,19 @@ const i18n = new VueI18n({
 
 Vue.config.productionTip = false
 
-const savedItems = localStorage.getItem('items')
+var savedItems = localStorage.getItem('items')
 const savedBoxes = localStorage.getItem('boxes')
 const savedLang = localStorage.getItem('lang')
 const savedTheme = localStorage.getItem('darkmode')
 if (savedBoxes || savedItems || (savedBoxes && savedLang !== 'undefined') || savedTheme !== null) {
-  store.commit('loadSave', { items: JSON.parse(savedItems), boxes: JSON.parse(savedBoxes), lang: savedLang, darkmode: savedTheme })
+  savedItems = JSON.parse(savedItems)
+  Object.keys(savedItems).forEach((key) => {
+    if (!!savedItems[key] && savedItems[key].description === null) {
+      savedItems[key].description = ''
+      localStorage.setItem('items', JSON.stringify(savedItems))
+    }
+  })
+  store.commit('loadSave', { items: savedItems, boxes: JSON.parse(savedBoxes), lang: savedLang, darkmode: savedTheme })
 } else {
   localStorage.setItem('items', JSON.stringify(store.state.items))
   localStorage.setItem('boxes', JSON.stringify(store.state.boxes))

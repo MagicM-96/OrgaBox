@@ -60,6 +60,7 @@
     <v-main>
       <v-container>
         <router-view></router-view>
+        <br />
         <v-row justify="center">
       <v-dialog v-model="dialog" persistent max-width="600px">
         <template>

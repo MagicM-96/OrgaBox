@@ -42,6 +42,6 @@ export default {
 
 <style scoped>
 a {
-  color: black !important;
+  color: var(--v-anchor-link) !important;
 }
 </style>

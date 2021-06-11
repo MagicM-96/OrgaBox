@@ -42,6 +42,11 @@ export default {
             try {
               importData = JSON.parse(this.importText)
               // TODO: control if the JSON format is correct
+              Object.keys(importData.items).forEach((key) => {
+                if (!!importData.items[key] && importData.items[key].description === null) {
+                  importData.items[key].description = ''
+                }
+              })
               this.$store.commit('loadSave', {
                 items: importData.items || {},
                 boxes: importData.boxes || []

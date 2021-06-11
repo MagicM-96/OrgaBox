@@ -1,6 +1,6 @@
 <template>
   <v-container v-if="box !== undefined">
-    <h1>{{ box.name }} <v-icon @click="createQR()" x-large color="rgba(0,0,0,1)" right>mdi-qrcode-plus</v-icon></h1>
+    <h1>{{ box.name }} <v-icon @click="createQR()" x-large class="qr-code-title" right>mdi-qrcode-plus</v-icon></h1>
     <v-icon @click="$router.go(-1)" x-large>mdi-arrow-left-circle-outline</v-icon><br /><br />
     <item :items="box.items" v-on:edit="edit($event)" v-on:move="move($event)" v-on:delete="remove($event)"></item>
     <br />
@@ -225,9 +225,16 @@ export default {
         this.mode !== 'delete' && this.mode !== 'qrcode' && this.mode !== 'move' ? this.$refs.form.reset() : this.mode === 'move' ? this.toBox = undefined : null
         this.mode = 'default'
         this.ammount = 0
+        this.description = ''
         this.activeItem = ''
       }, 200)
     }
   }
 }
 </script>
+
+<style scoped>
+.qr-code-title {
+  color: var(--v-anchor-link) !important;
+}
+</style>
